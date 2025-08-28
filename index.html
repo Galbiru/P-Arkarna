@@ -4,7 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Arkarna</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #fff;
+            color: #000;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .logo-wrapper {
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .logo {
+            border: 2px solid #000;
+            border-radius: 50%;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .project-title-wrapper {
+            margin: 20px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .project-title,
+        .project-name {
+            margin: 0;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 2.5em;
+            position: relative;
+            width: 100%;
+        }
+
+        .project-title::after,
+        .project-name::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 100%;
+            height: 3px;
+            background-color: #000;
+        }
+
+        .project-name::after {
+            bottom: -5px;
+        }
+
+        .link-area {
+            margin-top: 50px;
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 25px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #link-input {
+            width: 90%;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 1em;
+            font-style: italic;
+            background-color: transparent;
+        }
+
+        #link-input::placeholder {
+            color: #000;
+            font-style: italic;
+        }
+
+        .link-button {
+            margin-top: 50px;
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 1em;
+            font-style: italic;
+            color: #000;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .link-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 400px;
+            padding: 0 20px;
+        }
+
+        .real-time {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .refresh-button {
+            background: none;
+            border: none;
+            font-style: italic;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            color: #000;
+            padding: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -28,6 +178,65 @@
             <button class="refresh-button hidden" id="refresh-button">[refresh button]</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const linkInput = document.getElementById('link-input');
+            const linkArea = document.getElementById('link-area');
+            const linkButton = document.getElementById('link-button');
+            const refreshButton = document.getElementById('refresh-button');
+            let permanentLink = '';
+
+            function updateUI(link) {
+                if (link) {
+                    linkArea.classList.add('hidden');
+                    linkButton.classList.remove('hidden');
+                    refreshButton.classList.remove('hidden');
+                    linkButton.href = link;
+                    linkButton.textContent = 'click for the link';
+                } else {
+                    linkArea.classList.remove('hidden');
+                    linkButton.classList.add('hidden');
+                    refreshButton.classList.add('hidden');
+                    linkInput.value = '';
+                    linkInput.placeholder = 'insert the link';
+                    linkButton.href = '#';
+                }
+            }
+
+            const savedLink = localStorage.getItem('permanentLink');
+            if (savedLink) {
+                permanentLink = savedLink;
+                updateUI(permanentLink);
+            } else {
+                updateUI(null);
+            }
+
+            linkInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    const inputValue = linkInput.value.trim();
+                    if (inputValue) {
+                        permanentLink = inputValue;
+                        localStorage.setItem('permanentLink', permanentLink);
+                        updateUI(permanentLink);
+                    }
+                }
+            });
+
+            refreshButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                permanentLink = '';
+                localStorage.removeItem('permanentLink');
+                updateUI(null);
+            });
+
+            linkButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevents the default link behavior
+                if (permanentLink) {
+                    window.open(permanentLink, '_blank');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
