@@ -1,103 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Quantitative P Arkarna</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f4c3; /* Light background color */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh; /* Center vertically */
-            margin: 0;
-        }
-        .logo-top-left {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            max-width: 80px; /* Adjust logo size */
-            height: auto;
-        }
-        h1 {
-            text-align: center;
-            color: #3e2723; /* Dark color for the title */
-            font-weight: bold; /* Bold for the first line */
-            margin: 0;
-        }
-        .animated-text {
-            font-size: 2.5rem; /* Font size for the animated text */
-            display: flex; /* Use flex to align letters */
-            animation: move 5s linear infinite; /* Animation for moving effect */
-        }
-        .animated-text span {
-            animation: colorChange 1s infinite; /* Animation for color change */
-        }
-        @keyframes move {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-        @keyframes colorChange {
-            0% { color: #ff5722; }
-            20% { color: #ffeb3b; }
-            40% { color: #4caf50; }
-            60% { color: #2196f3; }
-            80% { color: #9c27b0; }
-            100% { color: #ff5722; }
-        }
-        #link-btn {
-            margin: 20px auto;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: white;
-            background-color: #ff7043; /* Button color */
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        #link-btn:hover {
-            background-color: #d32f2f; /* Darker shade on hover */
-        }
-    </style>
+    <title>Project Arkarna</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <img src="logo.png" alt="Project Logo" class="logo-top-left">
+    <div class="container">
+        <div class="logo-wrapper">
+            <div class="logo">logo</div>
+        </div>
 
-    <h1>Project Quantitative</h1>
-    <h1 class="animated-text">
-        <span>P</span>
-        <span>&nbsp;</span>
-        <span>r</span>
-        <span>&nbsp;</span>
-        <span>o</span>
-        <span>&nbsp;</span>
-        <span>j</span>
-        <span>&nbsp;</span>
-        <span>e</span>
-        <span>&nbsp;</span>
-        <span>c</span>
-        <span>&nbsp;</span>
-        <span>t</span>
-        <span>&nbsp;</span>
-        <span>A</span>
-        <span>&nbsp;</span>
-        <span>r</span>
-        <span>&nbsp;</span>
-        <span>k</span>
-        <span>&nbsp;</span>
-        <span>a</span>
-        <span>&nbsp;</span>
-        <span>r</span>
-        <span>&nbsp;</span>
-        <span>n</span>
-        <span>&nbsp;</span>
-        <span>a</span>
-    </h1>
-    <button id="link-btn" onclick="window.location.href='https://www.example.com';">Press me for the link</button>
+        <div class="project-title-wrapper">
+            <h1 class="project-title">Project</h1>
+            <h1 class="project-name">arkarna</h1>
+        </div>
+
+        <div class="link-area" id="link-area">
+            <input type="text" id="link-input" placeholder="insert the link">
+        </div>
+
+        <a href="#" class="link-button hidden" id="link-button">click for the link</a>
+
+        <div class="footer">
+            <span class="real-time" id="real-time">real time</span>
+            <button class="refresh-button hidden" id="refresh-button">[refresh button]</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
