@@ -10,17 +10,18 @@
             color: #000;
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 5vh 5vw; /* Lebih banyak padding untuk tampilan yang lebih lega */
+            padding: 5vh 5vw;
             display: flex;
             flex-direction: column;
             align-items: center;
             height: 100vh;
             box-sizing: border-box;
+            line-height: 1.2;
         }
 
         .container {
             width: 100%;
-            max-width: 90vw; /* Lebar maksimal 90% dari lebar viewport */
+            max-width: 90vw;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -30,14 +31,14 @@
         }
 
         .logo-wrapper {
-            position: absolute; /* Posisikan logo secara absolut */
-            top: 2vw; /* Jarak dari atas */
-            left: 2vw; /* Jarak dari kiri */
+            position: absolute;
+            top: 2vw;
+            left: 2vw;
         }
 
         .logo {
-            width: 15vw; /* Gunakan vw untuk ukuran yang lebih besar dan responsif */
-            max-width: 100px; /* Ukuran maksimal agar tidak terlalu besar di PC */
+            width: 30vw; /* 2x lebih besar dari 15vw */
+            max-width: 200px; /* 2x lebih besar dari 100px */
             border-radius: 50%;
             border: 2px solid #000;
             object-fit: contain;
@@ -45,12 +46,21 @@
             box-sizing: border-box;
         }
 
+        .real-time {
+            position: absolute; /* Posisikan waktu secara absolut */
+            top: 2vw;
+            right: 2vw;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 3vw;
+        }
+
         .content-center {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-grow: 1; /* Konten di tengah akan mengambil ruang yang tersedia */
+            flex-grow: 1;
             width: 100%;
         }
 
@@ -65,7 +75,7 @@
             margin: 0;
             font-style: italic;
             font-weight: bold;
-            font-size: 8vw; /* Ukuran font yang jauh lebih besar */
+            font-size: 8vw;
             position: relative;
             line-height: 1.2;
         }
@@ -76,8 +86,8 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: -2vw; /* Jarak dari bawah yang proporsional */
-            width: 80vw; /* Lebar garis yang proporsional */
+            bottom: -2vw;
+            width: 80vw;
             max-width: 400px;
             height: 0.8vw;
             max-height: 4px;
@@ -89,12 +99,12 @@
         }
 
         .link-area, .link-button {
-            margin-top: 10vw; /* Jarak dari atas yang lebih besar */
+            margin-top: 10vw;
             width: 80vw;
             max-width: 500px;
-            padding: 5vw 0; /* Padding yang lebih besar */
+            padding: 5vw 0;
             border: 2px solid #000;
-            border-radius: 5vw; /* Sudut melengkung yang proporsional */
+            border-radius: 5vw;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -106,7 +116,7 @@
             border: none;
             outline: none;
             text-align: center;
-            font-size: 5vw; /* Ukuran font yang lebih besar */
+            font-size: 5vw;
             font-style: italic;
             background-color: transparent;
         }
@@ -129,19 +139,13 @@
         .footer {
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Posisikan tombol refresh di kanan */
             align-items: flex-end;
-            position: absolute; /* Posisikan footer di bagian bawah */
-            bottom: 2vw; /* Jarak dari bawah */
-            left: 0;
+            position: absolute;
+            bottom: 2vw;
+            right: 2vw;
             padding: 0 5vw;
             box-sizing: border-box;
-        }
-
-        .real-time {
-            font-style: italic;
-            font-weight: bold;
-            font-size: 3vw;
         }
 
         .refresh-button {
@@ -174,10 +178,16 @@
                 top: 20px;
                 left: 20px;
             }
-            
+
             .logo {
-                width: 80px;
+                width: 160px; /* 2x dari 80px */
                 max-width: none;
+            }
+
+            .real-time {
+                top: 20px;
+                right: 20px;
+                font-size: 18px;
             }
 
             .project-title,
@@ -210,12 +220,11 @@
             .footer {
                 max-width: 800px;
                 bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
+                right: 50%;
+                transform: translateX(50%);
                 padding: 0 20px;
             }
-
-            .real-time, .refresh-button {
+            .refresh-button {
                 font-size: 16px;
             }
         }
@@ -226,11 +235,11 @@
         <div class="logo-wrapper">
             <img src="logo.png" alt="Logo Project Arkarna" class="logo" id="logo">
         </div>
-
+        <span class="real-time" id="real-time"></span>
         <div class="content-center">
             <div class="project-title-wrapper">
                 <h1 class="project-title">Project</h1>
-                <h1 class="project-name">arkarna</h1>
+                <h1 class="project-name">Arkarna</h1>
             </div>
 
             <div class="link-area" id="link-area">
@@ -241,7 +250,6 @@
         </div>
 
         <div class="footer">
-            <span class="real-time" id="real-time"></span>
             <button class="refresh-button hidden" id="refresh-button">[refresh button]</button>
         </div>
     </div>
