@@ -9,31 +9,315 @@
             background-color: #fff;
             color: #000;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 5vh 5vw; /* Lebih banyak padding untuk tampilan yang lebih lega */
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            padding: 20px;
             box-sizing: border-box;
-            line-height: 1.2;
         }
 
         .container {
             width: 100%;
-            max-width: 400px;
+            max-width: 90vw; /* Lebar maksimal 90% dari lebar viewport */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            position: absolute; /* Posisikan logo secara absolut */
+            top: 2vw; /* Jarak dari atas */
+            left: 2vw; /* Jarak dari kiri */
+        }
+
+        .logo {
+            width: 15vw; /* Gunakan vw untuk ukuran yang lebih besar dan responsif */
+            max-width: 100px; /* Ukuran maksimal agar tidak terlalu besar di PC */
+            border-radius: 50%;
+            border: 2px solid #000;
+            object-fit: contain;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .content-center {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            flex-grow: 1; /* Konten di tengah akan mengambil ruang yang tersedia */
+            width: 100%;
         }
 
-        .logo-wrapper {
-            margin-bottom: 20px;
-            align-self: flex-start;
+        .project-title-wrapper {
+            margin: 0;
+            width: 100%;
+            text-align: center;
         }
+
+        .project-title,
+        .project-name {
+            margin: 0;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 8vw; /* Ukuran font yang jauh lebih besar */
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .project-title::after,
+        .project-name::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -2vw; /* Jarak dari bawah yang proporsional */
+            width: 80vw; /* Lebar garis yang proporsional */
+            max-width: 400px;
+            height: 0.8vw;
+            max-height: 4px;
+            background-color: #000;
+        }
+
+        .project-name::after {
+            bottom: -1vw;
+        }
+
+        .link-area, .link-button {
+            margin-top: 10vw; /* Jarak dari atas yang lebih besar */
+            width: 80vw;
+            max-width: 500px;
+            padding: 5vw 0; /* Padding yang lebih besar */
+            border: 2px solid #000;
+            border-radius: 5vw; /* Sudut melengkung yang proporsional */
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #link-input {
+            width: 90%;
+            border: none;
+            outline: none;
+            text-align: center;
+            font-size: 5vw; /* Ukuran font yang lebih besar */
+            font-style: italic;
+            background-color: transparent;
+        }
+
+        #link-input::placeholder {
+            color: #000;
+            font-style: italic;
+        }
+
+        .link-button {
+            text-decoration: none;
+            color: #000;
+            font-size: 5vw;
+        }
+
+        .link-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: absolute; /* Posisikan footer di bagian bawah */
+            bottom: 2vw; /* Jarak dari bawah */
+            left: 0;
+            padding: 0 5vw;
+            box-sizing: border-box;
+        }
+
+        .real-time {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 3vw;
+        }
+
+        .refresh-button {
+            background: none;
+            border: none;
+            font-style: italic;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            color: #000;
+            padding: 0;
+            font-size: 3vw;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Penyesuaian untuk layar PC (ukuran di atas 768px) */
+        @media (min-width: 768px) {
+            body {
+                padding: 20px 50px;
+            }
+
+            .container {
+                max-width: 800px;
+            }
+
+            .logo-wrapper {
+                top: 20px;
+                left: 20px;
+            }
+            
+            .logo {
+                width: 80px;
+                max-width: none;
+            }
+
+            .project-title,
+            .project-name {
+                font-size: 60px;
+            }
+
+            .project-title::after,
+            .project-name::after {
+                width: 400px;
+                height: 4px;
+                bottom: -15px;
+            }
+
+            .project-name::after {
+                bottom: -5px;
+            }
+
+            .link-area, .link-button {
+                margin-top: 50px;
+                width: 500px;
+                padding: 25px;
+                border-radius: 25px;
+            }
+
+            #link-input, .link-button {
+                font-size: 20px;
+            }
+
+            .footer {
+                max-width: 800px;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 0 20px;
+            }
+
+            .real-time, .refresh-button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-wrapper">
+            <img src="logo.png" alt="Logo Project Arkarna" class="logo" id="logo">
+        </div>
+
+        <div class="content-center">
+            <div class="project-title-wrapper">
+                <h1 class="project-title">Project</h1>
+                <h1 class="project-name">arkarna</h1>
+            </div>
+
+            <div class="link-area" id="link-area">
+                <input type="text" id="link-input" placeholder="insert the link">
+            </div>
+
+            <a href="#" class="link-button hidden" id="link-button">click for the link</a>
+        </div>
+
+        <div class="footer">
+            <span class="real-time" id="real-time"></span>
+            <button class="refresh-button hidden" id="refresh-button">[refresh button]</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const linkInput = document.getElementById('link-input');
+            const linkArea = document.getElementById('link-area');
+            const linkButton = document.getElementById('link-button');
+            const refreshButton = document.getElementById('refresh-button');
+            const realTimeSpan = document.getElementById('real-time');
+            let permanentLink = '';
+
+            function updateUI(link) {
+                if (link) {
+                    linkArea.classList.add('hidden');
+                    linkButton.classList.remove('hidden');
+                    refreshButton.classList.remove('hidden');
+                    linkButton.href = link;
+                } else {
+                    linkArea.classList.remove('hidden');
+                    linkButton.classList.add('hidden');
+                    refreshButton.classList.add('hidden');
+                    linkInput.value = '';
+                    linkInput.placeholder = 'insert the link';
+                    linkButton.href = '#';
+                }
+            }
+
+            function updateRealTime() {
+                const now = new Date();
+                const day = now.toLocaleDateString('id-ID', { weekday: 'long' });
+                const date = now.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+                const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                realTimeSpan.textContent = `${day}, ${date} ${time}`;
+            }
+
+            const savedLink = localStorage.getItem('permanentLink');
+            if (savedLink) {
+                permanentLink = savedLink;
+                updateUI(permanentLink);
+            } else {
+                updateUI(null);
+            }
+
+            linkInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    const inputValue = linkInput.value.trim();
+                    if (inputValue) {
+                        permanentLink = inputValue;
+                        localStorage.setItem('permanentLink', permanentLink);
+                        updateUI(permanentLink);
+                    }
+                }
+            });
+
+            refreshButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                permanentLink = '';
+                localStorage.removeItem('permanentLink');
+                updateUI(null);
+            });
+
+            linkButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                if (permanentLink) {
+                    window.open(permanentLink, '_blank');
+                }
+            });
+
+            setInterval(updateRealTime, 1000);
+            updateRealTime();
+        });
+    </script>
+</body>
+</html>
 
         .logo {
             width: 80px;
@@ -290,3 +574,4 @@
     </script>
 </body>
 </html>
+
