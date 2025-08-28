@@ -39,8 +39,6 @@
         .logo {
             width: 30vw;
             max-width: 200px;
-            /* border-radius: 50%; <--- Dihilangkan */
-            /* border: 2px solid #000; <--- Dihilangkan */
             object-fit: contain;
             padding: 5px;
             box-sizing: border-box;
@@ -151,13 +149,16 @@
         .refresh-button {
             background: none;
             border: none;
-            font-style: italic;
-            font-weight: bold;
             cursor: pointer;
-            text-decoration: underline;
-            color: #000;
             padding: 0;
-            font-size: 3vw;
+        }
+
+        .refresh-button svg {
+            width: 3vw;
+            height: 3vw;
+            max-width: 24px;
+            max-height: 24px;
+            fill: #000;
         }
 
         .hidden {
@@ -224,8 +225,9 @@
                 transform: translateX(50%);
                 padding: 0 20px;
             }
-            .refresh-button {
-                font-size: 16px;
+            .refresh-button svg {
+                width: 24px;
+                height: 24px;
             }
         }
     </style>
@@ -250,7 +252,11 @@
         </div>
 
         <div class="footer">
-            <button class="refresh-button hidden" id="refresh-button">[refresh button]</button>
+            <button class="refresh-button hidden" id="refresh-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 2.05c2.95 0 5.48 1.54 6.94 3.86L15.3 9.4c-1.12-1.84-3.11-3.04-5.46-3.04-3.5 0-6.38 2.8-6.93 6.32H3.07C3.65 6.94 7.42 4.05 11 4.05zm-6.94 3.86C2.62 9.52 2.05 11 2.05 12c0 2.95 1.54 5.48 3.86 6.94l1.7-1.7C6.88 15.42 5.68 13.43 5.68 11.08c0-3.5 2.8-6.38 6.32-6.93V4.07C6.94 4.65 4.05 8.42 4.05 12c0 2.95 1.54 5.48 3.86 6.94l-1.7 1.7C2.62 19.52 2.05 18 2.05 12z"/>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -326,4 +332,3 @@
     </script>
 </body>
 </html>
-
